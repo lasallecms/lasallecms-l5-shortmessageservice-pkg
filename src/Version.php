@@ -1,6 +1,6 @@
 <?php
 
-namespace Lasallecms\Events;
+namespace Lasallecms\Shortmessageservice;
 
 /**
  *
@@ -37,7 +37,7 @@ class Version
      *
      * @var string
      */
-    const VERSION = '1.01';
+    const VERSION = '1.0.1';
 
 
     /**
@@ -45,7 +45,7 @@ class Version
      *
      * @var string
      */
-    const PACKAGE = 'Events package for LaSalleCMS';
+    const PACKAGE = 'SMS package for LaSalleCMS';
 
 
     /**

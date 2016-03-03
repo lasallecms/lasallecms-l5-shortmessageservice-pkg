@@ -1,8 +1,8 @@
 {
-    "name": "lasallecms/twilio",
-    "description": "Twilio.com for LaSalleCMS.",
+    "name": "lasallecms/lasallecmsshortmessageservice",
+    "description": "Short Message Service for LaSalleCMS.",
     "homepage": "http://lasallecms.com",
-    "keywords": ["laravel", "laravel5", "twilio", "LaSalleCMS", "South LaSalle", "Bob Bloom"],
+    "keywords": ["laravel", "laravel5", "sms", "amazon sns", "twilio", "LaSalleCMS", "South LaSalle", "Bob Bloom"],
     "license":"GPL-3.0",
     "type": "library",
     "authors": [
@@ -18,7 +18,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Lasallecms\\Twilio\\": "src/"
+            "Lasallecms\\Shortmessageservice\\": "src/"
         }
     },
     "minimum-stability": "dev"

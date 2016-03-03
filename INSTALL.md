@@ -1,7 +1,7 @@
 # INSTALLATION
 
 ## Summary 
-Optional LaSalleCMS package. 
+Optional LaSalleCMS package for text message handling. 
 
 
 ## composer.json:
@@ -9,7 +9,7 @@ Optional LaSalleCMS package.
 ```
 {
     "require": {
-        "lasallecms/twilio": "1.*",
+        "lasallecms/shortmessageservice": "1.*",
     }
 }
 ```
@@ -19,7 +19,7 @@ Optional LaSalleCMS package.
 
 In config/app.php:
 ```
-Lasallecms\Twilio\TwilioServiceProvider::class,
+Lasallecms\Shortmessageservice\ShortmessageserviceServiceProvider::class,
 ```
 
 

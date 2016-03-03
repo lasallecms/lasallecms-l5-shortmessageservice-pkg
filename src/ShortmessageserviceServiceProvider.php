@@ -1,4 +1,6 @@
-<?php namespace Lasallecms\Twilio;
+<?php
+
+namespace Lasallecms\Shortmessageservice;
 
 /**
  *
@@ -28,16 +30,20 @@
  *
  */
 
+// Laravel facades
+use Illuminate\Support\Facades\Config;
+
+// Laravel classes
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 
 
 /**
- * This is the Twilio service provider class.
+ * This is the Shortmessageservice service provider class.
  *
  * @author Bob Bloom <info@southlasalle.com>
  */
-class TwilioServiceProvider extends ServiceProvider {
+class ShortmessageserviceServiceProvider extends ServiceProvider {
 
     /**
      * Indicates if loading of the provider is deferred.
@@ -47,6 +53,7 @@ class TwilioServiceProvider extends ServiceProvider {
     protected $defer = false;
 
 
+
     /**
      * Boot the service provider.
      *
@@ -56,38 +63,16 @@ class TwilioServiceProvider extends ServiceProvider {
     {
         $this->setupConfiguration();
 
-        $this->setupMigrations();
-        $this->setupSeeds();
+        //$this->setupMigrations();
+        //$this->setupSeeds();
 
-        $this->setupRoutes($this->app->router);
+        //$this->setupRoutes($this->app->router);
 
-        $this->setupTranslations();
+        //$this->setupTranslations();
 
-        $this->setupViews();
+        //$this->setupViews();
 
         //$this->setupAssets();
-    }
-
-
-    /**
-     * Boot the service provider.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        $this->setupConfiguration();
-
-        $this->setupMigrations();
-        $this->setupSeeds();
-
-        $this->setupRoutes($this->app->router);
-
-        $this->setupTranslations();
-
-        $this->setupViews();
-
-        $this->setupAssets();
     }
 
     /**
@@ -97,7 +82,7 @@ class TwilioServiceProvider extends ServiceProvider {
      */
     protected function setupConfiguration()
     {
-        $configuration = realpath(__DIR__.'/../config/lasallecmstwilio.php');
+        $configuration = realpath(__DIR__.'/../config/lasallecmsshortmessageservice.php');
 
         $this->publishes([
             $configuration => config_path('lasallecmstwilio.php'),
@@ -142,7 +127,9 @@ class TwilioServiceProvider extends ServiceProvider {
      */
     public function register()
     {
-        $this->registertwilio();
+        $this->registerlasallecmsshortmessageservice();
+
+        $this->registerlasallecmsshortmessageservicecontracts();
     }
 
 
@@ -151,11 +138,39 @@ class TwilioServiceProvider extends ServiceProvider {
      *
      * @return void
      */
-    private function registertwilio()
+    private function registerlasallecmsshortmessageservice()
     {
-        $this->app->bind('twilio', function($app) {
-            return new twilio($app);
+        $this->app->bind('lasallecmsshortmessageservice', function($app) {
+            return new lasallecmsshortmessageservice($app);
         });
+    }
+
+
+    /**
+     * Register the SMS contract with its implementation
+     */
+    private function registerlasallecmsshortmessageservicecontracts() {
+
+        $this->app->bind(
+            'Lasallecms\Shortmessageservice\Contracts\ShortMessageService\ShortMessageService',
+            $this->getSMSNamespace()
+        );
+
+    }
+
+    /**
+     * What is the namespace of the SMS API we are using to send text messages?
+     */
+    private function getSMSNamespace() {
+
+        $smsWhoIsSendingYourTextMessages = config('lasallecmsshortmessageservice.sms_who_is_sending_your_text_messages');
+
+        if ($smsWhoIsSendingYourTextMessages == "twilio") {
+            return "Lasallecms\Shortmessageservice\UseTwilio";
+        }
+
+        // The default SMS API is Twilio
+        return "Lasallecms\Shortmessageservice\UseTwilio";
     }
 
 
@@ -167,7 +182,7 @@ class TwilioServiceProvider extends ServiceProvider {
      */
     public function setupRoutes(Router $router)
     {
-        $router->group(['namespace' => 'Lasallecms\Twilio\Http\Controllers'], function($router)
+        $router->group(['namespace' => 'Lasallecms\Shortmessageservice\Http\Controllers'], function($router)
         {
             require __DIR__.'/Http/routes.php';
         });
@@ -182,7 +197,7 @@ class TwilioServiceProvider extends ServiceProvider {
      */
     public function setupTranslations()
     {
-        $this->loadTranslationsFrom(__DIR__.'/../languages', 'twilio');
+        $this->loadTranslationsFrom(__DIR__.'/../languages', 'lasallecmsshortmessageservice');
     }
 
 
@@ -193,10 +208,10 @@ class TwilioServiceProvider extends ServiceProvider {
      */
     public function setupViews()
     {
-        $this->loadViewsFrom(__DIR__.'/../views', 'twilio');
+        $this->loadViewsFrom(__DIR__.'/../views', 'lasallecmsshortmessageservice');
 
         $this->publishes([
-            __DIR__.'/../views' => base_path('resources/views/vendor/lasallecmstwilio'),
+            __DIR__.'/../views' => base_path('resources/views/vendor/lasallecmsshortmessageservice'),
         ]);
 
     }
@@ -210,7 +225,7 @@ class TwilioServiceProvider extends ServiceProvider {
     public function setupAssets()
     {
         $this->publishes([
-            __DIR__.'/../public' => public_path('packages/lasallecmstwilio/'),
+            __DIR__.'/../public' => public_path('packages/lasallecmsshortmessageservice/'),
         ]);
 
     }

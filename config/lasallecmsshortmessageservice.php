@@ -2,7 +2,7 @@
 
 /**
  *
- * Twilio package for the LaSalle Content Management System, based on the Laravel 5 Framework
+ * Short Message Service package for the LaSalle Content Management System, based on the Laravel 5 Framework
  * Copyright (C) 2015 - 2016  The South LaSalle Trading Corporation
  *
  * This program is free software: you can redistribute it and/or modify
@@ -19,7 +19,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  *
- * @package    Twilio package for the LaSalle Content Management System
+ * @package    Short Message Service  package for the LaSalle Content Management System
  * @link       http://LaSalleCMS.com
  * @copyright  (c) 2015 - 2016, The South LaSalle Trading Corporation
  * @license    http://www.gnu.org/licenses/gpl-3.0.html
@@ -28,11 +28,17 @@
  *
  */
 
-/*
- * Admin auth routes
- */
-$router->get('admin/login', [
-    'as'   => 'admin.login',
-    'uses' => 'AdminAuth\AdminLoginController@getLogin'
-]);
+return [
 
+    /*
+    |-----------------------------------------------------------------------------------------
+    | What SMS provider are you using?
+    |-----------------------------------------------------------------------------------------
+    |
+    | What service are you using to send text messages?
+    |
+    | The available services are: "twilio", "amazon_sns"
+    |
+    */
+    'sms_who_is_sending_your_text_messages' => 'twilio',
+];

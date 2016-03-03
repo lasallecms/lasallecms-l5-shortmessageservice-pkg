@@ -1,5 +1,6 @@
 <?php
-namespace Lasallecms\Twilio\Http\Controllers;
+
+namespace Lasallecms\Shortmessageservice\Contracts\ShortMessageService;
 
 /**
  *
@@ -29,18 +30,24 @@ namespace Lasallecms\Twilio\Http\Controllers;
  *
  */
 
-// Laravel classes
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-
-
-abstract class Controller extends BaseController
+interface ShortMessageService
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    /**
+     * Send text message
+     *
+     * @param string  $phoneCountryCode  The user's cell phone country code
+     * @param string  $phoneNumber       The user's cell phone number
+     * @param string  $message           The message to send via SMS
+     * @return void
+     */
+    public function sendSMS($phoneCountryCode, $phoneNumber, $message);
+
+    /**
+     * The cell phone number to send the SMS, in the format the SMS provider requires
+     *
+     * @param string  $phoneCountryCode  The user's cell phone country code
+     * @param string  $phoneNumber       The user's cell phone number
+     * @return string
+     */
+    public function buildPhoneNumber($phoneCountryCode, $phoneNumber);
 }
-
-
-
-

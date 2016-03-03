@@ -1,4 +1,4 @@
-# TWILIO
+# Short Message Service 
 
 [![Total Downloads](https://img.shields.io/packagist/dt/lasallecms/twilio.svg?style=flat-square)](https://packagist.org/packages/lasallecms/twilio)
 [![Latest Stable Version](https://poser.pugx.org/lasallecms/twilio/v/stable.svg)](https://packagist.org/packages/lasallecms/twilio)
@@ -8,7 +8,7 @@
 [![Laravel](https://img.shields.io/badge/Laravel-v5.1-brightgreen.svg?style=flat-square)](http://laravel.com)
 
 
-Twilio package made specifically for my LaSalle Content Management System. 
+SMS package made specifically for my LaSalle Content Management System. 
 
 ## Security
 

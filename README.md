@@ -1,9 +1,9 @@
 # Short Message Service 
 
-[![Total Downloads](https://img.shields.io/packagist/dt/lasallecms/twilio.svg?style=flat-square)](https://packagist.org/packages/lasallecms/twilio)
-[![Latest Stable Version](https://poser.pugx.org/lasallecms/twilio/v/stable.svg)](https://packagist.org/packages/lasallecms/twilio)
-[![Latest Unstable Version](https://poser.pugx.org/lasallecms/twilio/v/unstable.svg)](https://packagist.org/packages/lasallecms/twilio)
-[![GitHub Issues](https://img.shields.io/github/issues/lasallecms/lasallecms-l5-twilio-pkg.svg)](https://github.com/lasallecms/lasallecms-l5-twilio-pkg/issues)
+[![Total Downloads](https://img.shields.io/packagist/dt/lasallecms/lasallecmsshortmessageservice.svg?style=flat-square)](https://packagist.org/packages/lasallecms/lasallecmsshortmessageservice)
+[![Latest Stable Version](https://poser.pugx.org/lasallecms/lasallecmsshortmessageservice/v/stable.svg)](https://packagist.org/packages/lasallecms/lasallecmsshortmessageservice)
+[![Latest Unstable Version](https://poser.pugx.org/lasallecms/lasallecmsshortmessageservice/v/unstable.svg)](https://packagist.org/packages/lasallecms/lasallecmsshortmessageservice)
+[![GitHub Issues](https://img.shields.io/github/issues/lasallecms/lasallecms-l5-lasallecmsshortmessageservice-pkg.svg)](https://github.com/lasallecms/lasallecms-l5-lasallecmsshortmessageservice-pkg/issues)
 [![Software License](https://img.shields.io/badge/license-GPLv3-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Laravel](https://img.shields.io/badge/Laravel-v5.1-brightgreen.svg?style=flat-square)](http://laravel.com)
 
